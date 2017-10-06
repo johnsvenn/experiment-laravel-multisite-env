@@ -1,0 +1,1 @@
+<h1>/resources/site-views/site2/tests/test.blade.php</h1>
