@@ -29,10 +29,14 @@ Each site will have it's vhost config but they will all share the same server 'r
 
 
 Create a new laravel site e.g. `laravel new t1.example.com`
+
 Genenerate a key `php artisan key:generate`
+
 Edit and setup your `.env` file as normal
+
 Rename and then copy your `.env` file for each 'site' e.g. `.env.t1`, `.env.t2`, `.env.t3`
-Edit the files updating credentials and adding a new variable 'SITE_KEY' - this is a unique id for your 'site'
+
+Edit the files updating credentials and adding a new variable 'SITE_KEY' - this is a unique id for your 'site', it will be loaded into config and so accessed within your application. It is also the name of the directory used to store overloaded views.
 
 ```
 APP_NAME='Site 1'
@@ -124,6 +128,22 @@ We need to get Laravel to load different .env files based on the environment - s
 Edit /resources/views/welcome.blade.php so we can confirm which .env file we are using
 
 You can test this by visiting the various URLs you've defined and they will show that they are using different configs.
+
+Site based view overloading
+---------------------------
+
+(see the code)
+
+Create a new ViewServiceProvider that allows us to update the view.paths
+
+Update /config/app.php to use the new Service Provider
+
+Create /resources/site-views/ and then a directory for each 'site' - this is where we store the views templates that we want to customise between sites.
+
+Copy welcome.blade.php into each of these sites and customise so you can test
+
+Create some further test routes and files
+
 
 
 
