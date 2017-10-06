@@ -16,6 +16,24 @@ $app = new Illuminate\Foundation\Application(
 );
 
 /*
+ |--------------------------------------------------------------------------
+ | Include the sites array
+ |--------------------------------------------------------------------------
+ |
+ | Test the host name against the whitelist of sites - however at this point
+ | the config hasn't been loaded yet
+ |
+ */
+
+$sites_config = include('../config/sites.php');
+
+if (isset($_SERVER['HTTP_HOST']) && isset($sites_config['sites'][$_SERVER['HTTP_HOST']])) {
+
+    $app->loadEnvironmentFrom($sites_config['sites'][$_SERVER['HTTP_HOST']]);
+}
+
+
+/*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
