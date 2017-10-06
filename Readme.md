@@ -144,7 +144,12 @@ Copy welcome.blade.php into each of these sites and customise so you can test
 
 Create some further test routes and files
 
+Notes
+-----
 
+It is possible to specify a datbase to use when using `php artisan migrate` e.g. `DB_DATABASE=t2 php artisan migrate`
+
+It doesn't appear to be possible to specify a `.env` file to use when running command like `php artisan key:generate` which is a shame (need to investigate further). It is possible to specify and environment using `--env=production` etc. but this is not the same - in this scenario we might have 'production' environments for each 'site'.
 
 
 
